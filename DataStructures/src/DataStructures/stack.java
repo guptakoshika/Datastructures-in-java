@@ -1,6 +1,6 @@
 package DataStructures;
 
- public class stack {
+ public class stack implements StackInterface{
        private int top;           //for indexing of the array
        private static final int s = 100;
        private int a[] = new int[s];
@@ -9,27 +9,27 @@ package DataStructures;
          top = -1;
      }
      
-     private boolean isempty(){
+     public boolean isEmpty(){
          if( top == -1)
              return true;
          return false;
      }
      
-     private boolean isfull(){
+     public boolean isFull(){
          if(top == s)
              return true ;
          return false;
      }
      
-     private void push( int data){
-         if(!isfull()){
+     public void push( int data){
+         if(!isFull()){
              top ++;
              a[top] = data ;
          }
      } 
      
-     private int pop(){
-         if(!isempty()){
+     public int pop(){
+         if(!isEmpty()){
             int d = a[top];
               top--;
               return d; 
@@ -37,7 +37,7 @@ package DataStructures;
          return -1;
      }
      
-     private int peek(){
+     public int peek(){
          return a[top];
      }
      
@@ -49,7 +49,7 @@ package DataStructures;
          s.push(20);
          System.out.println(s.peek());
          System.out.println(s.pop());
-         System.out.println(s.isfull());
-         System.out.println(s.isempty());
+         System.out.println(s.isFull());
+         System.out.println(s.isEmpty());
      }
 }
