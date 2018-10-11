@@ -1,12 +1,13 @@
 package DataStructures;
 
-public class stackusinglist {
+public class stackusinglist implements StackInterface {
    private node head;  
    private int top;
    
     public stackusinglist(){
             top = 0;
         }
+    
     static class node {
         private int data; 
         private node next; 
@@ -15,6 +16,11 @@ public class stackusinglist {
             next = null;
         }
     }
+     @Override
+    public boolean isFull() {
+        return false;     //because we are using linked list and in this case
+    }                    //their is no fixed number of elements.
+    
    public void push(int d)
    {
        node ne = new node(d);
@@ -28,9 +34,13 @@ public class stackusinglist {
     }
        return -1;
    }
-   public void pop(){
+   @Override
+   public int pop()
+   {
+       int d = head.data;
        head = head.next ;
        top--;
+       return d;
    }
    public boolean isEmpty(){
     if(top < 0)
