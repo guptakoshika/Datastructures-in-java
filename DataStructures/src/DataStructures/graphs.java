@@ -1,7 +1,7 @@
 
 package DataStructures;
 
-// graph using Adjency list 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 class graph {
@@ -16,23 +16,39 @@ class graph {
         for(int i = 0 ; i < vertices ; i++)
             arr[i] = new LinkedList<>();
     }
-    void addEdge(graph g , int src , int dest){
+    void addEdge(int src , int dest){
         arr[src].add(dest);
         arr[dest].add(src);
     }
+    void dfs(int vertex) 
+    {  
+        boolean visited[] = new boolean[vertices] ;
+        visited[vertex] = true; 
+        System.out.print(vertex + " "); 
+  
+        Iterator<Integer> i = arr[vertex].listIterator(); 
+        while (i.hasNext()) 
+        { 
+            int n = i.next(); 
+            if (!visited[n]) 
+                dfs(n); 
+        } 
+    } 
 }
 public class graphs{
-    
+   
      public static void main(String args[]) 
     {
         int vertices = 5; 
         graph g = new graph(vertices); 
-        g.addEdge(g, 0, 1); 
-        g.addEdge(g, 0, 4); 
-        g.addEdge(g, 1, 2); 
-        g.addEdge(g, 1, 3); 
-        g.addEdge(g, 1, 4); 
-        g.addEdge(g, 2, 3); 
-        g.addEdge(g, 3, 4); 
+         g.addEdge(0, 1); 
+        g.addEdge(0, 2); 
+        g.addEdge(1, 2); 
+        g.addEdge(2, 0); 
+        g.addEdge(2, 3); 
+        g.addEdge(3, 3);
+        
+        
+        g.dfs(2);
     } 
 } 
