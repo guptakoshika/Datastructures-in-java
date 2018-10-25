@@ -1,67 +1,65 @@
 package DataStructures;
-
-class student implements Comparable<student>{
+/* this code is implementation of generic binary search tree 
+ * it sorts on the basis of student roll number where roll_number is a data menber of class student 
+ */
+class student implements Comparable<student> {
 
     int roll_number;
     String name;
 
-    student(int r, String n ) {
+    student(int r, String n) {
         roll_number = r;
         name = n;
     }
 
     @Override
     public String toString() {
-        return "roll number : " + roll_number + " name : " + name ;
+        return "roll number : " + roll_number + " name : " + name;
     }
 
     @Override
-    public int compareTo(student obj) {
-        return roll_number - obj.roll_number;
+    public int compareTo(student o) {
+        return roll_number - o.roll_number;
     }
 }
 
-class binarysearch {
+class binarysearch<T extends Comparable<T>> {
 
-    static class node {
+    static class node<T> {
 
         node left;
         node right;
-        student key;
+        T key;
 
-        public node(student item) {
+        public node(T item) {
             right = left = null;
             key = item;
         }
-
     }
     node root;
 
-    void insert(student key) {
+    void insert(T key) {
         root = insertr(root, key);
     }
 
-    node insertr(node root, student key) {
+    node insertr(node root, T key) {
 
         if (root == null) {
             root = new node(key);
             return root;
         }
-        if (key.compareTo(root.key) < 0 ) {
+        if (key.compareTo((T) root.key)< 0) {
             root.left = insertr(root.left, key);
         } else {
             root.right = insertr(root.right, key);
         }
-
         return root;
     }
 
     void inorder() {
-        // System.out.println("root is: " + root.right.key.roll_number);
         inorderRec(root);
     }
 
-    // A utility function to do inorder traversal of BST 
     void inorderRec(node root) {
         if (root != null) {
             inorderRec(root.left);
@@ -79,7 +77,7 @@ public class bst {
         student s3 = new student(5, "xyz");
         student s4 = new student(11, "mno");
 
-        binarysearch obj = new binarysearch();
+        binarysearch<student> obj = new binarysearch<>();
         obj.insert(s1);
         obj.insert(s2);
         obj.insert(s4);
@@ -88,3 +86,4 @@ public class bst {
         obj.inorder();
     }
 }
+S
