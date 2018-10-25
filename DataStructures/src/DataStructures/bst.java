@@ -86,4 +86,3 @@ public class bst {
         obj.inorder();
     }
 }
-S
