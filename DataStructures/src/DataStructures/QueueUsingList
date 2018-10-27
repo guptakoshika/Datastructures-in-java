@@ -1,0 +1,24 @@
+package DataStuctures;
+
+public class QueueUsingList {
+    private int front ;
+    private int rear; 
+    private Linkedlsit l ;
+    public Queue(){
+        front = rear = -1;
+        l =  new Linkedlsit();
+    }
+   
+    void enqueue(int data){
+        if()
+        l.add_at_last(data);
+    }
+    
+    void dequeue(){
+        l.deleteFromBegining();
+    }
+    
+    int peek(){
+       return l.peek();
+    }
+}
