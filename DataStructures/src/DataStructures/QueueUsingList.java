@@ -5,7 +5,7 @@ public class QueueUsingList {
     private int front ;
     private int rear; 
     private Linkedlsit l ;
-    public Queue(){
+    public QueueUsingList(){
            front = rear = -1;
         l = new Linkedlsit();
     }
